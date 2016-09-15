@@ -7,3 +7,71 @@ templates:
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+properties:
+  dbdumper.broker_name:
+    description: registration name of the broker
+    default: dbdumper-broker
+  dbdumper.db.service:
+    description: dbdumper db market place service to use
+    default: p-mysql
+
+  dbdumper.db.plan:
+    description: dbdumper db market place service plan to use
+    default: 100mb
+    
+  dbdumper.security_group:
+    description: dbdumper security group. must enable cf api access
+        
+  dbdumper.security.user.name:
+    description: security username
+    default: broker
+  dbdumper.security.user.password:
+    description: security password
+  dbdumper.cf.client.target.host:
+    description: cloudfoundry hostname 
+  dbdumper.cf.client.skip.ssl.validation:
+    description: should skip ssl validation for unsigned cf api
+    default: false
+  dbdumper.cf.client.username:
+    description: cloudfoundry username
+  dbdumper.cf.client.password:
+    description: cloudfoundry password
+  dbdumper.cf.client.clientId:
+    decription: oauth client_id
+    default: cf
+  dbdumper.cf.client.clientSecret:
+    description: client_secret
+    default: ""
+  dbdumper.cf.security.password.encodingSecret:
+    description: password_encoding_secret
+    default: ""
+  dbdumper.cf.service.broker.id:
+    description: service_broker_id, seen as service offering name
+    default: dbdumper
+  dbdumper.cf.service.plan.id:
+    description: service_plan_id
+    default: default    
+    
+  cf.api_url:
+    description: 'Full URL of Cloud Foundry API'
+    example: 'https://api.your-domain.example.com'
+  cf.skip_ssl_validation:
+    description: 'Skip SSL validation when connecting to Cloud Foundry API'
+    default: false
+  cf.username:
+    description: 'Username of the admin user'
+  cf.password:
+    description: 'Password of the admin user'
+  cf.org:
+    description: 'Password of the admin user'
+    example: system_domain
+  cf.default_space:
+    description: 'Password of the admin user'
+    example: default
+  cf.target_space:
+    description: 'Password of the admin user'
+  cf.appname:
+    description: cf app name to push. will also be the hostname on cf.domain
+  cf.domain:
+    description: domain name to expose the gateway
+  

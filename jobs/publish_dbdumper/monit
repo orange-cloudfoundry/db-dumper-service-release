@@ -1,5 +1,0 @@
-check process publish_dbdumper
-  with pidfile /var/vcap/sys/run/publish_dbdumper/publish_dbdumper.pid
-  start program "/var/vcap/jobs/publish_dbdumper/bin/monit_debugger publish_dbdumper_ctl '/var/vcap/jobs/publish_dbdumper/bin/ctl start'"
-  stop program "/var/vcap/jobs/publish_dbdumper/bin/monit_debugger publish_dbdumper_ctl '/var/vcap/jobs/publish_dbdumper/bin/ctl stop'"
-  group vcap
