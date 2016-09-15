@@ -11,3 +11,7 @@ cli/cli-linux-amd64-6.17.0.tgz:
   object_id: e5ea51fc-bd6a-4f67-8cb1-8fe8b14dd780
   sha: c552c8f4436a63c2034d47f66fd218426c632112
   size: 6153376
+db-dumper-pkg/1.2.2/db-dumper-service.zip:
+  object_id: d2eec7d7-b8b1-4dd0-b52f-22ab02554758
+  sha: 416c9b2966133f2993508faa35c9ed6cec7d97ad
+  size: 58473337
