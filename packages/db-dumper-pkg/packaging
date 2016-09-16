@@ -1,6 +1,8 @@
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
+DB_DUMPER_SERVICE_VERSION=1.2.2
+
 # Detect # of CPUs so make jobs can be parallelized
 CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
@@ -8,4 +10,14 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
-
+unzip ${BOSH_COMPILE_TARGET}/db-dumper-pkg/${DB_DUMPER_SERVICE_VERSION}/db-dumper-service.zip
+if [[ $? != 0 ]] ; then
+  echo "Failed extracting db-dumper-service archive"
+  exit 1
+fi
+# Copy db-dumper-service war
+echo "Copying db-dumper-service war..."
+echo "########################### DEBUG #############################"
+find ${BOSH_COMPILE_TARGET}
+echo "########################### DEBUG #############################"
+cp -a ${BOSH_COMPILE_TARGET}/db-dumper-service/target/*.war ${BOSH_INSTALL_TARGET}/db-dumper-service.war

@@ -9,6 +9,7 @@ templates:
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/manifest.yml.erb: config/manifest.yml
 properties:
   dbdumper.broker_name:
     description: registration name of the broker
@@ -31,9 +32,6 @@ properties:
     description: security password
   dbdumper.cf.client.target.host:
     description: cloudfoundry hostname 
-  dbdumper.cf.client.skip.ssl.validation:
-    description: should skip ssl validation for unsigned cf api
-    default: false
   dbdumper.cf.client.username:
     description: cloudfoundry username
   dbdumper.cf.client.password:
@@ -44,16 +42,12 @@ properties:
   dbdumper.cf.client.clientSecret:
     description: client_secret
     default: ""
-  dbdumper.cf.security.password.encodingSecret:
-    description: password_encoding_secret
-    default: ""
   dbdumper.cf.service.broker.id:
     description: service_broker_id, seen as service offering name
-    default: dbdumper
-  dbdumper.cf.service.plan.id:
-    description: service_plan_id
-    default: default    
-    
+    default: db-dumper-service
+  dbdumper.encryptionKey:
+    description: This encryption key is used to encrypt databases passwords in database
+  
   cf.api_url:
     description: 'Full URL of Cloud Foundry API'
     example: 'https://api.your-domain.example.com'
