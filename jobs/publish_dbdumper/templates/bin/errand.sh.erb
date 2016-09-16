@@ -33,7 +33,7 @@ cf create-service <%= p("dbdumper.db.service") %> <%= p("dbdumper.db.plan") %> d
 echo "######################### DEBUG ########################"
 find /var/vcap/jobs
 echo "######################### DEBUG ########################"
-cf push -f /var/vcap/jobs/db-dumper-service/config/manifest.yml
+cf push -f /var/vcap/jobs/publish_dbdumper/config/manifest.yml
 
 #create service broker + update if already existing  
 cf create-service-broker <%= p("dbdumper.broker_name") %> <%= p("dbdumper.security.user.name") %> <%= p("dbdumper.security.user.password") %> https://$CF_APP_NAME.$CF_DOMAIN

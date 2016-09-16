@@ -38,10 +38,8 @@ properties:
     description: cloudfoundry password
   dbdumper.cf.client.clientId:
     decription: oauth client_id
-    default: cf
   dbdumper.cf.client.clientSecret:
     description: client_secret
-    default: ""
   dbdumper.cf.service.broker.id:
     description: service_broker_id, seen as service offering name
     default: db-dumper-service
