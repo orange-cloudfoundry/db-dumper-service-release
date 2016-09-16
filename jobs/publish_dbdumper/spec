@@ -68,6 +68,10 @@ properties:
                  If you set only one formula this formula will be played for all quota
     default: quota,0.90*quota
 
+  dbdumper.s3_bucket_uri:
+    description: s3 bucket uri used by user provided service (including credentials)
+    example: s3://xxxxxxxxxxxxxxxxxxxxxxxxxxxx:yyyyyyyyyyyyyyyyyyyyyyyy@url
+
   dbdumper.job.errored_delete_expiration_days:
     description: number of days before deleting job failing 
     default: 2

@@ -29,10 +29,10 @@ cf bind-security-group  <%= p("dbdumper.security_group") %> $CF_ORG $CF_TARGET_S
 #create mysql db service
 cf create-service <%= p("dbdumper.db.service") %> <%= p("dbdumper.db.plan") %> dbdumper-mysql
 
+#create s3-dumps-bucket
+cf create-user-provided-service s3-dumps-bucket -p '{"uri":"<%= p("dbdumper.s3_bucket_uri") %>"}'
+
 #push db-dumper war
-echo "######################### DEBUG ########################"
-find /var/vcap/jobs
-echo "######################### DEBUG ########################"
 cf push -f /var/vcap/jobs/publish_dbdumper/config/manifest.yml
 
 #create service broker + update if already existing  

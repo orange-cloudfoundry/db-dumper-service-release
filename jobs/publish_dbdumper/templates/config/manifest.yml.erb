@@ -48,6 +48,6 @@ env:
   JBP_CONFIG_CONTAINER_CERTIFICATE_TRUST_STORE: '{enabled: true}'
 buildpack: java_buildpack
 services:
-#- riak-db-dumper-service
+- s3-dumps-bucket
 - dbdumper-mysql
 
