@@ -45,7 +45,43 @@ properties:
     default: db-dumper-service
   dbdumper.encryptionKey:
     description: This encryption key is used to encrypt databases passwords in database
+  dbdumper.admin.username:
+    description: dbdumper admin user
+  dbdumper.admin.password:
+    description: password of dbdumper admin user
+
+  dbdumper.service_definition.is_free:
+    description: service is free ? Set it to false to use calculated cost after
+    default: true
+  dbdumper.service_definition.currency:
+    descrition: change to your local currency
+    default: usd
+  dbdumper.service_definition.cost_mb:
+    description: how much cost to save 1mb by month following your currency (by default, 1 cents)
+    default: 0.1
+  dbdumper.service_definition.quota:
+    description: define quotas. Add any quota you want (e.g 10gb or 12ko).
+    default: 100mb,1gb
+  dbdumper.service_definition.cost_formulas:
+    description: (`quota` is for quota*service_definition_cost_mb price) formulas corresponding to each quota to calculate price
+                 in following for 100mb the price will be 100mb*service_definition_cost_mb and for 1gb it will be 90% of 1gb*service_definition_cost_mb
+                 If you set only one formula this formula will be played for all quota
+    default: quota,0.90*quota
+
+  dbdumper.job.errored_delete_expiration_days:
+    description: number of days before deleting job failing 
+    default: 2
+  dbdumper.job.finished_delete_expiration_minutes:
+    description: number of minutes
+    default: 8
+  dbdumper.dump_delete_expiration_days:
+    description: number of days
+    default: 5
   
+  dbdumper.filer_type:
+    description: by default, the dump is compressed and send to S3 -- other value is S3 (this will send dump to S3 without compression)
+    default: GzipS3
+
   cf.api_url:
     description: 'Full URL of Cloud Foundry API'
     example: 'https://api.your-domain.example.com'
@@ -68,4 +104,12 @@ properties:
     description: cf app name to push. will also be the hostname on cf.domain
   cf.domain:
     description: domain name to expose the gateway
-  
+  cf.appmemory:
+    description: memory allocated to pushed app
+    default: 1G
+  cf.appinstances:
+    description: db-dumper-service handle n instances
+    default: 2
+  cf.app_start_timeout:
+    description: application start timeout in seconds
+    default: 180  

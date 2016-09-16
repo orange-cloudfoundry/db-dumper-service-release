@@ -1,23 +1,22 @@
 ---
 #Generated manifest
 name: <%= p("cf.appname") %>
-memory: 1G
-instances: 2 # db-dumper-service handle n instances
+memory: <%= p("cf.appmemory") %>
+instances: <%= p("cf.appinstances") %> # db-dumper-service handle n instances
 path: /var/vcap/packages/db-dumper-pkg/db-dumper-service.war
 host: <%= p("cf.appname") %>
 domain: <%= p("cf.domain") %>
-timeout: 180
+timeout: <%= p("cf.app_start_timeout") %>
 env:
   spring_profiles_active: cloud,core,uaa
   logging_level_com_orange_clara_cloud_servicedbdumper: INFO # you can change the verbosity to: WARN, DEBUG, ERROR
   broker_username: <%= p("dbdumper.security.user.name") %>
   broker_password: <%= p("dbdumper.security.user.password") %>
-  admin_username: my@dmin
-  admin_password: myPasssw0rd
+  admin_username: <%= p("dbdumper.admin.username") %>
+  admin_password: <%= p("dbdumper.admin.password") %>
   cf_admin_user: <%= p("dbdumper.cf.client.username") %>
   cf_admin_password: <%= p("dbdumper.cf.client.password") %>
-  filer_type: GzipS3 # this is create a compressed dump and send to S3 -- other value is: S3 (this will send dump to S3 without compression)
-  dump_delete_expiration_days: 5
+  filer_type: <%= p("dbdumper.filer_type") %> # this is create a compressed dump and send to S3 -- other value is: S3 (this will send dump to S3 without compression)
   use_ssl: true # If you will be on https set this value to true
   CF_TARGET: https://uaa.<%= p("dbdumper.cf.client.target.host") %> # url of your uaa (set it if you want to also use uaa). This url is also used to download the TLS certificate and trust it as valid for the cloudcontroller URL
   cloud_controller_url: https://api.<%= p("dbdumper.cf.client.target.host") %> # url of your cloudfoundry api
@@ -25,22 +24,22 @@ env:
   security_oauth2_client_clientSecret: <%= p("dbdumper.cf.client.clientSecret") %>
   service_definition_id: <%= p("dbdumper.cf.service.broker.id") %> # your service broker name id for multi-db-dumper-service instances. Note db-dumper-cli-plugin leverages the default value "db-dumper-service" as default, avoid changing unless necessary
   # Cost definitions
-  service_definition_is_free: true # set it to false to use calculated cost after
-  service_definition_currency: usd # change to your local currency
-  service_definition_cost_mb: 0.1 # how much cost to save 1mb by month following your currency (here 1 cents)
-  service_definition_quota: 100mb,1gb # add any quota you want (e.g: 10gb or 12ko).
+  service_definition_is_free: <%= p("dbdumper.service_definition.is_free") %>
+  service_definition_currency: <%= p("dbdumper.service_definition.currency") %>
+  service_definition_cost_mb: <%= p("dbdumper.service_definition.cost_mb") %>
+  service_definition_quota: <%= p("dbdumper.service_definition.quota") %>
   ## Formulas
   # (`quota` is for quota*service_definition_cost_mb price) formulas corresponding to each quota to calculate price
   # in following for 100mb the price will be 100mb*service_definition_cost_mb and for 1gb it will be 90% of 1gb*service_definition_cost_mb
   # If you set only one formula this formula will be played for all quota
-  service_definition_cost_formulas: quota,0.90*quota
+  service_definition_cost_formulas: <%= p("dbdumper.service_definition.cost_formulas") %>
   # uncomment if you want to plug to a spring-boot-admin app (see: https://github.com/codecentric/spring-boot-admin)
   #spring_boot_admin_url: http://spring-boot-admin.your.url.com
   #spring_boot_admin_username: spring-boot-admin-user
   #spring_boot_admin_password: spring-boot-admin-password
-  job_errored_delete_expiration_days: 2
-  job_finished_delete_expiration_minutes: 8
-  dump_delete_expiration_days: 5
+  job_errored_delete_expiration_days: <%= p("dbdumper.job.errored_delete_expiration_days") %>
+  job_finished_delete_expiration_minutes: <%= p("dbdumper.job.finished_delete_expiration_minutes") %>
+  dump_delete_expiration_days: <%= p("dbdumper.dump_delete_expiration_days") %>
   encryption_key: <%= p("dbdumper.encryptionKey") %> # This encryption key is used to encrypt databases passwords in database
   #When you do not use uaa, dashboard use basic auth with a default user: user/password . Set and uncomment those env var to change name and password
   #user_username: user
