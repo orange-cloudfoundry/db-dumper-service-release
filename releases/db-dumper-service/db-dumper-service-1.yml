@@ -1,0 +1,35 @@
+---
+packages:
+- name: openjdk
+  version: 93c072891062f43e6a7fad1f3232064da90429af
+  fingerprint: 93c072891062f43e6a7fad1f3232064da90429af
+  sha1: f61875d3c1994e7622f1e916afe27a299da5671d
+  dependencies: []
+- name: jq
+  version: b0831a924f18926b8f83d105a16d2718407fa03c
+  fingerprint: b0831a924f18926b8f83d105a16d2718407fa03c
+  sha1: e2f66bbf4d58338b7ea392eb9dcafe73447ad0f2
+  dependencies: []
+- name: db-dumper-pkg
+  version: f4a74e52851cb2688e4b677919a5de9cd064ef56
+  fingerprint: f4a74e52851cb2688e4b677919a5de9cd064ef56
+  sha1: bd3ad4d8ae456be59d5d3a0f2e44aa91283bed54
+  dependencies: []
+- name: cli
+  version: 0f19a1df7ef777208cc3bfcdc875b2b56613ab40
+  fingerprint: 0f19a1df7ef777208cc3bfcdc875b2b56613ab40
+  sha1: d94003791469c2cbfaca3506fdaee519c5b29cb1
+  dependencies: []
+jobs:
+- name: publish_dbdumper
+  version: 6c355e15ca47d6a314a0ee279e4b4c9f517c1300
+  fingerprint: 6c355e15ca47d6a314a0ee279e4b4c9f517c1300
+  sha1: 4a0f553becc5b8a62eaef5170420d81172ccb704
+license:
+  version: 8ca608bd3578ee17c21ec68853509d039dc27d74
+  fingerprint: 8ca608bd3578ee17c21ec68853509d039dc27d74
+  sha1: 9741891b6107594e9996cc39daf233330dd905bf
+commit_hash: 1e863166
+uncommitted_changes: true
+name: db-dumper-service
+version: '1'
