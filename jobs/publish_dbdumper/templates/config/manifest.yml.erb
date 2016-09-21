@@ -18,7 +18,7 @@ env:
   cf_admin_password: <%= p("dbdumper.cf.client.password") %>
   filer_type: <%= p("dbdumper.filer_type") %> # this is create a compressed dump and send to S3 -- other value is: S3 (this will send dump to S3 without compression)
   use_ssl: true # If you will be on https set this value to true
-  CF_TARGET: https://uaa.<%= p("dbdumper.cf.client.target.host") %> # url of your uaa (set it if you want to also use uaa). This url is also used to download the TLS certificate and trust it as valid for the cloudcontroller URL
+  uaa_url: https://uaa.<%= p("dbdumper.cf.client.target.host") %> # url of your uaa (set it if you want to also use uaa). This url is also used to download the TLS certificate and trust it as valid for the cloudcontroller URL
   cloud_controller_url: https://api.<%= p("dbdumper.cf.client.target.host") %> # url of your cloudfoundry api
   security_oauth2_client_clientId: <%= p("dbdumper.cf.client.clientId") %>
   security_oauth2_client_clientSecret: <%= p("dbdumper.cf.client.clientSecret") %>
@@ -44,7 +44,7 @@ env:
   #When you do not use uaa, dashboard use basic auth with a default user: user/password . Set and uncomment those env var to change name and password
   #user_username: user
   #user_password: password
-  JAVA_OPTS: "-Djava.security.egd=file:/dev/urandom"
+  JAVA_OPTS: "-Djava.security.egd=file:/dev/urandom  -Dogging.level.com.orange.clara.cloud.servicedbdumper=INFO"
   JBP_CONFIG_CONTAINER_CERTIFICATE_TRUST_STORE: '{enabled: true}'
 buildpack: java_buildpack
 services:
