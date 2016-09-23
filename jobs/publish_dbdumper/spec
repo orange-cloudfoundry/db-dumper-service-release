@@ -73,13 +73,13 @@ properties:
     example: s3://xxxxxxxxxxxxxxxxxxxxxxxxxxxx:yyyyyyyyyyyyyyyyyyyyyyyy@url
 
   dbdumper.job.errored_delete_expiration_days:
-    description: number of days before deleting job failing 
+    description: Delete a job in error from database after this number of days
     default: 2
   dbdumper.job.finished_delete_expiration_minutes:
-    description: number of minutes
+    description: Delete a finished job from database after this number of minutes
     default: 8
   dbdumper.dump_delete_expiration_days:
-    description: number of days
+    description: Delete really a dump from filer after this number of days
     default: 5
   
   dbdumper.filer_type:
