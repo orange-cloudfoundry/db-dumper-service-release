@@ -19,3 +19,7 @@ db-dumper-pkg/1.3.0/db-dumper-service.zip:
   object_id: 06a67820-4995-4d58-86b6-ab20ab65908f
   sha: 1cfef4f9ef1b21918ce6d4bd0841ed711b095bdf
   size: 58473611
+db-dumper-pkg/1.3.1/db-dumper-service.zip:
+  object_id: 045887ef-7f20-456f-beea-e929f7b174d4
+  sha: 309c61810679579621823fbed518bf0139132eb2
+  size: 58617889
